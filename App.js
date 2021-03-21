@@ -16,7 +16,7 @@ import auth from '@react-native-firebase/auth';
 global.email = '';
 global.user_id = '';
 global.tckn = '';
-global.realName = '';
+global.real_name = '';
 global.password = '';
 global.friendsAdded = false;
 global.subscriptionWarningEnabled = false;
@@ -42,7 +42,7 @@ export default class App extends Component {
         global.email = '';
         global.user_id = '';
         global.tckn = '';
-        global.realName = '';
+        global.real_name = '';
         global.password = '';
         this.setState({isLoggedIn: false});
     }
@@ -56,7 +56,7 @@ export default class App extends Component {
         global.email = user.email;
         global.user_id = user.user_id;
         global.tckn = user.tckn;
-        global.realName = user.name;
+        global.real_name = user.real_name;
         global.password = user.password;
         this.setState({isLoggedIn: true});
     }
@@ -180,7 +180,7 @@ export default class App extends Component {
         .then(res => {
             console.log('User account created & signed in!');
             let user = {
-                name: name,
+                real_name: name,
                 tckn: tckn,
                 email: email,
                 password: password,
@@ -189,8 +189,8 @@ export default class App extends Component {
             // Our end
             client.mutate({
                 mutation: gql`
-                    mutation RegisterUser($name: String, $tckn:String, $email:String, $password: String, $user_id:String,) {
-                        insert_users(objects: {user_id: $user_id, tckn: $tckn, password: $password, real_name: $name, email: $email}) {
+                    mutation RegisterUser($real_name: String, $tckn:String, $email:String, $password: String, $user_id:String,) {
+                        insert_users(objects: {user_id: $user_id, tckn: $tckn, password: $password, real_name: $real_name, email: $email}) {
                             returning {
                                 user_id
                                 tckn

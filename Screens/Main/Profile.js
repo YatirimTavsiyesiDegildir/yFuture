@@ -19,6 +19,7 @@ import {
 } from '@ui-kitten/components';
 
 const LogoutIcon = props => <Icon {...props} name="log-out"/>;
+const LockIcon = props => <Icon {...props} name="lock"/>;
 import styles from "../../src/styles";
 
 export default class ProfileScreen extends Component {
@@ -34,15 +35,17 @@ export default class ProfileScreen extends Component {
         />
     );
 
-    ModalWithBackdropShowcase = (badgeString, imgUri) => {
+    ModalWithBackdropShowcase = (badgeString="", imgUri="", locked=false) => {
         return (
-            <View style={ProfileStyles.newContainer}>
+            <View style={[ProfileStyles.badgeContainer,locked ? {backgroundColor: '#7F7F7F77', borderRadius: 10} : null]}>
+                {!locked ?
+                    <>
                 <TouchableOpacity
                     onPress={() =>
                         this.setState({visible: true, badgeText: badgeString})
                     }>
                     <Image
-                        style={{height: 100, width: 100, margin: 15}}
+                        style={{height: 70, width: 70, margin: 10}}
                         source={{
                             uri: imgUri,
                         }}
@@ -57,6 +60,7 @@ export default class ProfileScreen extends Component {
                         <Text>{this.state.badgeText}</Text>
                     </Card>
                 </Modal>
+                    </> : <LockIcon fill={'#575757'} style={{height: '100%', width:'100%'}}/>}
             </View>
         );
     };
@@ -76,25 +80,24 @@ export default class ProfileScreen extends Component {
                             <Image
                                 style={ProfileStyles.avatar}
                                 source={{
-                                    uri:
-                                        'https://project-lyda.s3.eu-central-1.amazonaws.com/pp/' +
-                                        global.user_id +
-                                        '.png',
+                                    uri: 'https://thispersondoesnotexist.com/image'
                                 }}
                             />
                         </View>
                     </View>
                     <View style={ProfileStyles.infoContainer}>
-                        <Text category={'h1'}>{global.realName}</Text>
+                        <Text category={'h1'} style={ProfileStyles.realName}>{global.real_name}</Text>
+                        {/*
                         <Text category={'label'} appearance={'hint'}>
-                            {'@' + global.username}
+                            {'@' + global.real_name}
                         </Text>
+                        */}
                     </View>
                     <View style={ProfileStyles.logoutContainer}>
-                        <Text category={'h3'}>Başarılarım</Text>
+                        <Text category={'h3'} style={ProfileStyles.badgeTitle}>Rozetlerim</Text>
                         <View
                             style={{
-                                height: '100%',
+                                height: '50%',
                                 width: '100%',
                                 flexDirection: 'row',
                                 justifyContent: 'center',
@@ -112,6 +115,39 @@ export default class ProfileScreen extends Component {
                                 'Tebrikler! Lyda hesabını bir banka hesabına bağladın.',
                                 'https://project-lyda.s3.eu-central-1.amazonaws.com/badges/natural.jpeg',
                             )}
+                            {this.ModalWithBackdropShowcase(
+                                '',
+                                '',
+                                true
+                            )}
+                        </View>
+                        <View
+                            style={{
+                                height: '50%',
+                                width: '100%',
+                                flexDirection: 'row',
+                                justifyContent: 'center',
+                            }}>
+                            {this.ModalWithBackdropShowcase(
+                                '',
+                                '',
+                                true
+                            )}
+                            {this.ModalWithBackdropShowcase(
+                                '',
+                                '',
+                                true
+                            )}
+                            {this.ModalWithBackdropShowcase(
+                                '',
+                                '',
+                                true
+                            )}
+                            {this.ModalWithBackdropShowcase(
+                                '',
+                                '',
+                                true
+                            )}
                         </View>
                     </View>
                 </Layout>
@@ -122,8 +158,11 @@ export default class ProfileScreen extends Component {
 
 
 const ProfileStyles = StyleSheet.create({
-    newContainer: {
-        minHeight: 192,
+    badgeContainer: {
+        height: 75,
+        width: 75,
+        margin: 10,
+        justifyContent: 'center'
     },
     backdrop: {
         backgroundColor: 'rgba(0, 0, 0, 0.5)',
@@ -132,6 +171,7 @@ const ProfileStyles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
+        padding: 30
     },
     avatarContainer: {
         flex: 2,
@@ -142,6 +182,7 @@ const ProfileStyles = StyleSheet.create({
         alignItems: 'center',
         width: '100%',
         padding: 20,
+        paddingTop: 0
     },
     logoutContainer: {
         flex: 3,
@@ -172,4 +213,13 @@ const ProfileStyles = StyleSheet.create({
         shadowOpacity: 0.5,
         shadowRadius: 10,
     },
+    realName: {
+        fontSize: 30,
+        fontWeight: 'bold'
+    },
+    badgeTitle: {
+        fontSize: 30,
+        fontWeight: 'bold',
+        width: '100%',
+    }
 });
