@@ -83,7 +83,6 @@ export default class FriendsScreen extends Component {
     }
 
     renderFriendCard = ({item, index}) => {
-        console.log(Math.random().toString());
         return (
             <FriendCard
                 cardProps={item}
