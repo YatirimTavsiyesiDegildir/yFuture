@@ -1,27 +1,23 @@
 import React, {Component} from 'react';
-import {Alert, YellowBox} from 'react-native';
+import {Alert} from 'react-native';
 import * as eva from '@eva-design/eva';
 import {ApplicationProvider, IconRegistry} from '@ui-kitten/components';
 import {EvaIconsPack} from '@ui-kitten/eva-icons';
 import LoginNavigator from './Screens/Navigators/LoginNavigator';
 import MainNavigator from './Screens/Navigators/MainNavigator';
-import {FetchPost} from './Utils/Fetch';
 import {StoreData, GetData} from './Utils/AsyncStorage';
-import {call} from 'react-native-reanimated';
 import theme from './src/themes/theme';
 import {client} from './back-end/OurApi';
 import {gql} from "@apollo/client";
 import auth from '@react-native-firebase/auth';
 
-YellowBox.ignoreWarnings(['Warning: ReactNative.createElement']);
 
 /**GLOBALS START*/
 global.email = '';
-global.userId = 0;
+global.userId = '';
 global.tckn = '';
 global.realName = '';
 global.password = '';
-global.username = '';
 global.friendsAdded = false;
 global.subscriptionWarningEnabled = false;
 /**GLOBALS END*/
@@ -36,19 +32,18 @@ export default class App extends Component {
         this.checkCredentials();
     }
 
+    /** ASYNC STORAGE START*/
     clearLoginInfo() {
         StoreData('email', '');
         StoreData('user_id', '');
         StoreData('tckn', '');
         StoreData('real_name', '');
         StoreData('password', '');
-        StoreData('username', '');
         global.email = '';
         global.userId = '';
         global.tckn = '';
         global.realName = '';
         global.password = '';
-        global.username = '';
         this.setState({isLoggedIn: false});
     }
 
@@ -58,16 +53,17 @@ export default class App extends Component {
         StoreData('tckn', user.tckn);
         StoreData('real_name', user.name);
         StoreData('password', user.password);
-        StoreData('username', user.username);
         global.email = user.email;
         global.userId = user.id;
         global.tckn = user.tckn;
         global.realName = user.name;
         global.password = user.password;
-        global.username = user.username;
         this.setState({isLoggedIn: true});
     }
 
+    /** ASYNC STORAGE END*/
+
+    // Login from async storage
     async checkCredentials() {
         let email = await GetData('email');
         let password = await GetData('password');
@@ -77,99 +73,103 @@ export default class App extends Component {
             password !== null &&
             password !== ''
         ) {
+            let user = {email: email, password: password};
+            await auth()
+            .signInWithEmailAndPassword(email, password)
+            .then(res => {
+                console.log('User account signed in!');
+                client
+                .query({
+                    query: gql`
+                        query MyQuery($email: String, $password: String) {
+                            users(
+                                where: {email: {_eq: $email}, _and: {password: {_eq: $password}}}
+                            ) {
+                                email
+                                real_name
+                                password
+                                tckn
+                                user_id
+                            }
+                        }
+                    `,
+                    variables: {user},
+                })
+                .then(result => {
+                    if (result.data.users.length === 1) {
+                        let user = result.data.users[0];
+                        this.saveLoginInfo(user);
+                        callback();
+                    } else {
+                        Alert.alert('Email veya sifre yanlis.');
+                        callback();
+                    }
+                })
+                .catch(result => {
+                    Alert.alert('Bir hata olustu.');
+                    callback();
+                });
+            })
+            .catch(error => {
+                if (error.code === 'auth/email-already-in-use') {
+                    Alert.alert('Email already in use, please try sign-in.');
+                } else if (error.code === 'auth/invalid-email') {
+                    Alert.alert('Email address is invalid');
+                } else {
+                    Alert.alert('A problem occurred.');
+                }
+                console.error(error);
+            });
+        }
+    }
+
+    async logInUserWithPassword(email, password, callback) {
+        let user = {email: email, password: password};
+        await auth()
+        .signInWithEmailAndPassword(email, password)
+        .then(res => {
+            console.log('User account signed in!');
             client
             .query({
                 query: gql`
                     query MyQuery($email: String, $password: String) {
                         users(
-                            where: {
-                                email: {_eq: $email}
-                                _and: {_or: {password: {_eq: $password}}}
-                            }
+                            where: {email: {_eq: $email}, _and: {password: {_eq: $password}}}
                         ) {
                             email
-                            id
-                            tckn
-                            username
-                            name
+                            real_name
                             password
-                            phonenumber
+                            tckn
+                            user_id
                         }
                     }
                 `,
-                variables: {
-                    email: email,
-                    password: password,
-                },
+                variables: {user},
             })
             .then(result => {
                 if (result.data.users.length === 1) {
                     let user = result.data.users[0];
                     this.saveLoginInfo(user);
+                    callback();
                 } else {
-                    this.clearLoginInfo();
+                    Alert.alert('Email veya sifre yanlis.');
+                    callback();
                 }
             })
             .catch(result => {
-                this.clearLoginInfo();
+                Alert.alert('Bir hata olustu.');
+                callback();
             });
-        }
-    }
-
-    logInUserWithPassword(email, password, callback) {
-        this.saveLoginInfo({
-            email: 't@t.com',
-            user_id: 1,
-            tckn: 0,
-            real_name: 'Test',
-            password: '0',
-            username: 'test'
-        });
-        return;
-        StoreData('email', user.email);
-        StoreData('user_id', user.id);
-        StoreData('tckn', user.tckn);
-        StoreData('real_name', user.name);
-        StoreData('password', user.password);
-        StoreData('username', user.username);
-        client
-        .query({
-            query: gql`
-                query MyQuery($email: String, $password: String) {
-                    users(
-                        where: {
-                            email: {_eq: $email}
-                            _and: {_or: {password: {_eq: $password}}}
-                        }
-                    ) {
-                        email
-                        id
-                        tckn
-                        username
-                        name
-                        password
-                        phonenumber
-                    }
-                }
-            `,
-            variables: {
-                email: email,
-                password: password,
-            },
         })
-        .then(result => {
-            if (result.data.users.length === 1) {
-                let user = result.data.users[0];
-                this.saveLoginInfo(user);
-                callback();
+        .catch(error => {
+            if (error.code === 'auth/email-already-in-use') {
+                Alert.alert('Email already in use, please try sign-in.');
+            } else if (error.code === 'auth/invalid-email') {
+                Alert.alert('Email address is invalid');
             } else {
-                Alert.alert('Email veya sifre yanlis.');
-                callback();
+                Alert.alert('A problem occurred.');
             }
-        })
-        .catch(result => {
-            Alert.alert('Bir hata olustu.');
-            callback();
+            console.log(error);
         });
     }
 
@@ -190,14 +190,13 @@ export default class App extends Component {
             client.mutate({
                 mutation: gql`
                     mutation RegisterUser($name: String, $tckn:String, $email:String, $password: String, $user_id:String,) {
-                        insert_users(objects: {user_id: $user_id, tckn: $tckn, password: $password, name: $name, email: $email}) {
+                        insert_users(objects: {user_id: $user_id, tckn: $tckn, password: $password, real_name: $name, email: $email}) {
                             returning {
                                 user_id
                                 tckn
                                 password
-                                name
+                                real_name
                                 email
-                                id
                             }
                         }
                     }
