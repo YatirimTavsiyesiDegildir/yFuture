@@ -79,7 +79,7 @@ export default class GraphsScreen extends Component {
               ) : (
                 <View style={{height: 20}} />
               )}
-              <Text category="h4" style={GraphsStyles.sectionTitle}>
+              <Text category="h4" style={styles.titleTextMedium}>
                 Aylık Birikim Degişimi
               </Text>
               <LineChart
@@ -120,8 +120,8 @@ export default class GraphsScreen extends Component {
                 }}
               />
 
-              <View style={{height: 40}} />
-              <Text category="h4" style={GraphsStyles.sectionTitle}>
+              <View style={GraphsStyles.divider} />
+              <Text category="h4" style={styles.titleTextMedium}>
                 Bu Ayın Harcamaları
               </Text>
               {global.friendsAdded ? <FriendWarningCard /> : null}
@@ -174,11 +174,9 @@ export default class GraphsScreen extends Component {
                 paddingRight={40}
               />
 
-              <View style={{height: 40}} />
+              <View style={GraphsStyles.divider} />
               <View style={{flexDirection: 'row', width: '100%'}}>
-                <Text
-                  category="h4"
-                  style={[GraphsStyles.sectionTitle, {flex: 1}]}>
+                <Text category="h4" style={styles.titleTextMedium}>
                   Harcama Alışkanlıkları
                 </Text>
                 <TouchableOpacity
@@ -232,7 +230,7 @@ export default class GraphsScreen extends Component {
               />
 
               <View style={GraphsStyles.divider} />
-              <Text category="h4" style={GraphsStyles.sectionTitle}>
+              <Text category="h4" style={styles.titleTextMedium}>
                 Birikim Hedefleri
               </Text>
               <OurProgressChart/>

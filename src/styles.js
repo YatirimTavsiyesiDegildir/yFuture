@@ -38,6 +38,14 @@ const styles = StyleSheet.create({
         fontSize:22,
         color: 'white',
         fontWeight: 'bold'
+    },
+    titleTextMedium: {
+        fontSize: 30,
+        fontWeight: 'bold',
+        width: '100%',
+        marginTop: 10,
+        marginBottom: 10,
+        textAlign: 'center'
     }
 });
 
