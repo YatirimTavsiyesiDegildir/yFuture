@@ -116,6 +116,21 @@ export default class App extends Component {
   }
 
   logInUserWithPassword(email, password, callback) {
+    this.saveLoginInfo({
+      email: 't@t.com',
+      user_id: 1,
+      tckn: 0,
+      real_name: 'Test',
+      password: '0',
+      username: 'test'
+    });
+    return;
+    StoreData('email', user.email);
+    StoreData('user_id', user.id);
+    StoreData('tckn', user.tckn);
+    StoreData('real_name', user.name);
+    StoreData('password', user.password);
+    StoreData('username', user.username);
     client
       .query({
         query: gql`
