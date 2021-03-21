@@ -8,21 +8,20 @@ import {
     List,
     ListItem,
     Icon,
-    TopNavigationAction, Input,
+    TopNavigationAction, Input, Button,
 } from '@ui-kitten/components';
 import {BankApiCard} from '../../../Components/Card';
 import {FetchGet} from '../../../Utils/Fetch';
 
 const TagIcon = props => <Icon {...props} name="pricetags"/>;
 const HashIcon = props => <Icon {...props} name="hash-outline"/>;
-const EmailIcon = props => <Icon {...props} name="email"/>;
-const LockIcon = props => <Icon {...props} name="lock"/>;
 
 export default class AddTarget extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            refreshing: false
+            refreshing: false, name: "", target: 0, stored: 0
+
         };
     }
 
@@ -56,31 +55,30 @@ export default class AddTarget extends Component {
                         value={this.state.name}
                         onChangeText={nextValue => this.setState({name: nextValue})}
                         accessoryLeft={TagIcon}
-                        autoCapitalize="words"
+                        autoCapitalize="none"
                     />
                     <Input
-                        placeholder="National Identification Number"
-                        value={this.state.tckn}
-                        onChangeText={nextValue => this.setState({tckn: nextValue})}
+                        placeholder="Birikim Hedefi"
+                        value={this.state.target}
+                        onChangeText={nextValue => this.setState({target: nextValue})}
                         accessoryLeft={HashIcon}
                         autoCapitalize="none"
                         keyboardType={"number-pad"}
                     />
                     <Input
-                        placeholder="E-mail"
-                        value={this.state.email}
-                        onChangeText={nextValue => this.setState({email: nextValue})}
-                        accessoryLeft={EmailIcon}
+                        placeholder="Elinizdeki Miktar"
+                        value={this.state.stored}
+                        onChangeText={nextValue => this.setState({stored: nextValue})}
+                        accessoryLeft={HashIcon}
                         autoCapitalize="none"
+                        keyboardType={"number-pad"}
                     />
-                    <Input
-                        placeholder="Password"
-                        value={this.state.password}
-                        onChangeText={nextValue => this.setState({password: nextValue})}
-                        secureTextEntry={true}
-                        accessoryLeft={LockIcon}
-                        autoCapitalize="none"
-                    />
+                    <Button
+                        onPress={() => {
+                            // TODO: Send to graphql here
+                        }}>
+                        {'Ekle'}
+                    </Button>
                 </Layout>
             </SafeAreaView>
         );
@@ -93,5 +91,11 @@ const AddTargetStyles = StyleSheet.create({
         width: '100%',
         paddingLeft: 20,
         paddingRight: 20,
+    },
+    button: {
+        width: 200,
+        height: 45,
+        marginTop: 0,
+        marginBottom: 20,
     },
 });
