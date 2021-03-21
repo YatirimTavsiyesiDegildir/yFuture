@@ -1,20 +1,16 @@
 import React, {Component} from 'react';
-import {SafeAreaView, StyleSheet, Alert, RefreshControl, View, ScrollView, Image} from 'react-native';
+import {SafeAreaView, StyleSheet,  View, ScrollView} from 'react-native';
 import {
     Divider,
     Layout,
     Text,
     TopNavigation,
     Icon,
-    TopNavigationAction, Input, Button, Card,
+    TopNavigationAction, Card,
 } from '@ui-kitten/components';
-import {client} from '../../back-end/OurApi';
-import {gql} from "@apollo/client";
 import styles from "../../src/styles";
 import {SubscriptionWarningCard} from "../../Components/Card";
 
-const TagIcon = props => <Icon {...props} name="pricetags"/>;
-const HashIcon = props => <Icon {...props} name="hash-outline"/>;
 
 export default class Notifications extends Component {
     constructor(props) {

@@ -139,8 +139,6 @@ export default class GraphsScreen extends Component {
                             <Text category="h4" style={styles.titleTextMedium}>
                                 Bu Ayın Harcamaları
                             </Text>
-                            {global.friendsAdded ? <FriendWarningCard/> : null}
-
                             <PieChart
                                 data={[
                                     {

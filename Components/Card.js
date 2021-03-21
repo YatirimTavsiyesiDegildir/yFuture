@@ -151,8 +151,7 @@ export const FriendWarningCard = props => {
           />
         </View>
         <Text style={{flex: 1, color: '#FFF'}}>
-          Ev dışındaki harcamaların arkdaşlarindan %35 daha fazla. Bu
-          harcamalardan kısarak birikimlerine odaklanabilirsin.
+            {props.text}
         </Text>
       </View>
     </Card>

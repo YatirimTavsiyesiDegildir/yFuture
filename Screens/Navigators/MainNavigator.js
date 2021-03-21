@@ -15,6 +15,7 @@ import PastPurchasesScreen from '../Main/Main/PastPurchases';
 import TargetScreen from '../Main/Targets/Targets';
 import AddTarget from '../Main/Targets/AddTarget';
 import Notifications from "../Main/Notifications";
+import Advice from "../Main/Friends/Advice";
 
 import {createStackNavigator} from '@react-navigation/stack';
 
@@ -48,6 +49,7 @@ const FriendsStack = props => (
     <Stack.Navigator headerMode="none">
         <Stack.Screen name="FriendsScreen" component={FriendsScreen}/>
         <Stack.Screen name="AddFriendsScreen" component={AddFriendsScreen}/>
+        <Stack.Screen name="AdvicesScreen" component={Advice}/>
     </Stack.Navigator>
 );
 

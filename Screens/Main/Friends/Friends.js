@@ -24,6 +24,7 @@ import {gql} from '@apollo/client';
 import styles from "../../../src/styles";
 
 const AddFriendIcon = props => <Icon {...props} name="person-add-outline"/>;
+const FlashIcon = props => <Icon {...props} name="flash-outline"/>;
 
 export default class FriendsScreen extends Component {
     constructor(props) {
@@ -102,6 +103,13 @@ export default class FriendsScreen extends Component {
         />
     );
 
+    navigateAdvices = () => (
+        <TopNavigationAction
+            icon={FlashIcon}
+            onPress={() => this.props.navigation.navigate('AdvicesScreen')}
+        />
+    );
+
     render() {
         return (
             <SafeAreaView style={{flex: 1}}>
@@ -109,6 +117,7 @@ export default class FriendsScreen extends Component {
                     title={<Text style={styles.miniTitle}>Arkadaşlarım</Text>}
                     alignment="center"
                     accessoryRight={this.navigateAddFriends}
+                    accessoryLeft={this.navigateAdvices}
                 />
                 <Divider/>
                 <Layout
