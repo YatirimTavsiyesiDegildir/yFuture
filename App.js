@@ -10,7 +10,7 @@ import {StoreData, GetData} from './Utils/AsyncStorage';
 import {call} from 'react-native-reanimated';
 import theme from './src/themes/theme';
 import {client} from './back-end/OurApi';
-import {useMutation, gql} from "@apollo/client";
+import {gql} from "@apollo/client";
 import auth from '@react-native-firebase/auth';
 
 YellowBox.ignoreWarnings(['Warning: ReactNative.createElement']);
