@@ -12,8 +12,8 @@ import AddBankAPI from '../Main/Main/AddBankAPI';
 import FriendsScreen from '../Main/Friends/Friends';
 import AddFriendsScreen from '../Main/Friends/AddFriends';
 import PastPurchasesScreen from '../Main/Main/PastPurchases';
-import TargetScreen from '../Main/Targets';
-import AddTarget from '../Main/AddTarget';
+import TargetScreen from '../Main/Targets/Targets';
+import AddTarget from '../Main/Targets/AddTarget';
 
 import { createStackNavigator } from '@react-navigation/stack';
 

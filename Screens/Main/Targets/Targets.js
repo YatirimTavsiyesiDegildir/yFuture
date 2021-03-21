@@ -24,11 +24,8 @@ import {
 export default class TargetScreen extends Component {
   constructor(props) {
     super(props);
-    this.state = { visible: false, badgeText: '' };
+    this.state = { targets: [] };
   }
-
-
-
 
   ModalWithBackdropShowcase = (badgeString, imgUri) => {
     return (
@@ -58,12 +55,12 @@ export default class TargetScreen extends Component {
   };
 
 
-  AddIcon = props => <Icon {...props} name="plus-circle-outline" />;
+  PlusIcon = props => <Icon {...props} name="plus-circle-outline" />;
 
   renderRightActions = () => (
     <React.Fragment>
       <TopNavigationAction
-        icon={this.AddIcon}
+        icon={this.PlusIcon}
         onPress={() => {
           this.props.navigation.navigate('AddTarget');
           this.setState({ visible: true });
@@ -78,7 +75,7 @@ export default class TargetScreen extends Component {
         <TopNavigation
           title="Birikim Hedeflerim"
           alignment="center"
-          accessoryRight={this.BackAction}
+          accessoryRight={this.renderRightActions}
         />
         <Divider />
         <Layout style={ProfileStyles.container}>
