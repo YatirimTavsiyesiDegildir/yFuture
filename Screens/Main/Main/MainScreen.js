@@ -125,7 +125,7 @@ export default class GraphsScreen extends Component {
                             />
                         </Card>
 
-                        <View style={GraphsStyles.divider}/>
+                        <View style={styles.divider}/>
                         <Card style={styles.card}>
                             <Text category="h4" style={styles.titleTextMedium}>
                                 Bu Ayın Harcamaları
@@ -201,7 +201,7 @@ export default class GraphsScreen extends Component {
                                 <Text>%30 - Faturalar</Text></View>
                         </Card>
 
-                        <View style={GraphsStyles.divider}/>
+                        <View style={styles.divider}/>
 
                         <Card style={styles.card}>
                             <Text category="h4" style={styles.titleTextMedium}>
@@ -225,9 +225,6 @@ export default class GraphsScreen extends Component {
 }
 
 const GraphsStyles = StyleSheet.create({
-    divider: {
-        height: 40
-    },
     listContainer: {
         flex: 1,
         width: '100%',

@@ -218,7 +218,7 @@ export const PurchaseCard = props => {
 const CardStyles = StyleSheet.create({
   subscriptionButton: {
     width: 150,
-    margin: 20,
+    margin: 16,
   },
   card: {
     flex: 1,

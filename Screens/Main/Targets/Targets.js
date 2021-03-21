@@ -111,13 +111,13 @@ const ProfileStyles = StyleSheet.create({
     },
     avatarContainer: {
         flex: 2,
-        padding: 20,
+        padding: 16,
     },
     infoContainer: {
         flex: 1,
         alignItems: 'center',
         width: '100%',
-        padding: 20,
+        padding: 16,
     },
     logoutContainer: {
         flex: 3,

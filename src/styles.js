@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     },
     infoText: {},
     miniTitle: {
-        fontSize: 15,
+        fontSize: 20,
         fontWeight: 'bold',
     },
     submitButton: {
@@ -70,7 +70,10 @@ const styles = StyleSheet.create({
 
         elevation: 5,
         borderRadius: 10
-    }
+    },
+    divider: {
+        height: 20
+    },
 });
 
 export default styles;

@@ -135,7 +135,7 @@ const LoginStyles = StyleSheet.create({
         flex: 3,
         width: '100%',
         alignItems: 'center',
-        padding: 20,
+        padding: 16,
     },
     bottomView: {
         position: 'absolute',
