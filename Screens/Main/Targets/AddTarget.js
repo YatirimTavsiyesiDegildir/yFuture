@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { SafeAreaView, StyleSheet, Alert, RefreshControl, View } from 'react-native';
+import React, {Component} from 'react';
+import {SafeAreaView, StyleSheet, Alert, RefreshControl, View} from 'react-native';
 import {
     Divider,
     Layout,
@@ -10,13 +10,14 @@ import {
     Icon,
     TopNavigationAction, Input, Button,
 } from '@ui-kitten/components';
-import { BankApiCard } from '../../../Components/Card';
-import { FetchGet } from '../../../Utils/Fetch';
-import { client } from '../../../back-end/OurApi';
-import { gql } from "@apollo/client";
+import {BankApiCard} from '../../../Components/Card';
+import {FetchGet} from '../../../Utils/Fetch';
+import {client} from '../../../back-end/OurApi';
+import {gql} from "@apollo/client";
+import styles from "../../../src/styles";
 
-const TagIcon = props => <Icon {...props} name="pricetags" />;
-const HashIcon = props => <Icon {...props} name="hash-outline" />;
+const TagIcon = props => <Icon {...props} name="pricetags"/>;
+const HashIcon = props => <Icon {...props} name="hash-outline"/>;
 
 export default class AddTarget extends Component {
     constructor(props) {
@@ -30,7 +31,7 @@ export default class AddTarget extends Component {
     componentDidMount() {
     }
 
-    GoBackIcon = props => <Icon {...props} name="arrow-back-outline" />;
+    GoBackIcon = props => <Icon {...props} name="arrow-back-outline"/>;
 
     renderLeftActions = () => (
         <React.Fragment>
@@ -43,26 +44,26 @@ export default class AddTarget extends Component {
 
     render() {
         return (
-            <SafeAreaView style={{ flex: 1 }}>
+            <SafeAreaView style={{flex: 1}}>
                 <TopNavigation
-                    title="Yeni hedef ekle"
+                    title={<Text style={styles.miniTitle}>Yeni Hedef Ekle</Text>}
                     alignment="center"
                     accessoryLeft={this.renderLeftActions}
                 />
-                <Divider />
+                <Divider/>
                 <Layout
-                    style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                    style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
                     <Input
                         placeholder="Hedef"
                         value={this.state.name}
-                        onChangeText={nextValue => this.setState({ name: nextValue })}
+                        onChangeText={nextValue => this.setState({name: nextValue})}
                         accessoryLeft={TagIcon}
                         autoCapitalize="none"
                     />
                     <Input
                         placeholder="Birikim Hedefi"
                         value={this.state.target}
-                        onChangeText={nextValue => this.setState({ target: nextValue })}
+                        onChangeText={nextValue => this.setState({target: nextValue})}
                         accessoryLeft={HashIcon}
                         autoCapitalize="none"
                         keyboardType={"number-pad"}
@@ -70,7 +71,7 @@ export default class AddTarget extends Component {
                     <Input
                         placeholder="Elinizdeki Miktar"
                         value={this.state.stored}
-                        onChangeText={nextValue => this.setState({ stored: nextValue })}
+                        onChangeText={nextValue => this.setState({stored: nextValue})}
                         accessoryLeft={HashIcon}
                         autoCapitalize="none"
                         keyboardType={"number-pad"}

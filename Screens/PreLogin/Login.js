@@ -97,7 +97,7 @@ export default class LoginScreen extends Component {
                                 {this.state.loading ? '' : 'Giris Yap'}
                             </Button>
                             <TouchableOpacity onPress={this.navigateRegister}>
-                                <Text>Hesabin yok mu? Kayit ol!</Text>
+                                <Text style={styles.ghostText}>Hesabin yok mu? Kayit ol!</Text>
                             </TouchableOpacity>
                         </View>
                     </View>

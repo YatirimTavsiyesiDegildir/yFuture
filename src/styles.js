@@ -3,10 +3,10 @@ import {
 } from 'react-native';
 
 const styles = StyleSheet.create({
-    textInput:{
+    textInput: {
         height: 40,
     },
-    input:{
+    input: {
         margin: 5
     },
     titleText: {
@@ -17,6 +17,16 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         textAlign: 'center'
     },
+    ghostText: {
+        fontSize: 15,
+        fontWeight: 'bold',
+        color: 'grey'
+    },
+    infoText: {},
+    miniTitle: {
+        fontSize: 15,
+        fontWeight: 'bold',
+    }
 });
 
 export default styles;

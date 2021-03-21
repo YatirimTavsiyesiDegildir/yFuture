@@ -28,6 +28,7 @@ import {
 } from '../../../Components/Card';
 
 import {OurProgressChart} from "../../../src/component/ProgressChart";
+import styles from "../../../src/styles";
 
 export default class GraphsScreen extends Component {
   constructor(props) {
@@ -56,7 +57,7 @@ export default class GraphsScreen extends Component {
     return (
       <SafeAreaView style={{flex: 1}}>
         <TopNavigation
-          title="Finansal Durumum"
+          title={<Text style={styles.miniTitle}>Finansal Durumum</Text>}
           alignment="center"
           accessoryRight={this.renderRightActions}
         />
