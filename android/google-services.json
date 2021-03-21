@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "313476663025",
+    "project_id": "project-hacktothefuture",
+    "storage_bucket": "project-hacktothefuture.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:313476663025:android:497111046245c5e8fc0b50",
+        "android_client_info": {
+          "package_name": "com.project_hacktothefuture"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "313476663025-ba4i57f3c7jpdlgldsn0e9elk2fcg4p7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4VF6rqkxy5LugxzxpAmgnOxQhWMK0nAA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "313476663025-ba4i57f3c7jpdlgldsn0e9elk2fcg4p7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
