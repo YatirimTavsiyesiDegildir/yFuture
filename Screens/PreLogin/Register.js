@@ -14,11 +14,13 @@ import {
   Layout,
   Text,
 } from '@ui-kitten/components';
+import styles from "../../src/styles";
 
 const PersonIcon = props => <Icon {...props} name="person-outline" />;
 const HashIcon = props => <Icon {...props} name="hash-outline" />;
 const EmailIcon = props => <Icon {...props} name="email" />;
 const LockIcon = props => <Icon {...props} name="lock" />;
+
 
 export default class RegisterScreen extends Component {
   constructor(props) {
@@ -35,8 +37,8 @@ export default class RegisterScreen extends Component {
           <Layout
               style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
             <View style={LoginStyles.inputContainer}>
-              <Text category="h1" style={{marginBottom: 30, marginTop: 30}}>
-                Register a New User
+              <Text category="h1" style={styles.titleText}>
+                Kayit Ol
               </Text>
               <Input
                   placeholder="Name"
@@ -44,6 +46,8 @@ export default class RegisterScreen extends Component {
                   onChangeText={nextValue => this.setState({name: nextValue})}
                   accessoryLeft={PersonIcon}
                   autoCapitalize="words"
+                  textStyle={styles.textInput}
+                  style={styles.input}
               />
               <Input
                   placeholder="National Identification Number"
@@ -52,6 +56,8 @@ export default class RegisterScreen extends Component {
                   accessoryLeft={HashIcon}
                   autoCapitalize="none"
                   keyboardType={"number-pad"}
+                  textStyle={styles.textInput}
+                  style={styles.input}
               />
               <Input
                   placeholder="E-mail"
@@ -59,6 +65,8 @@ export default class RegisterScreen extends Component {
                   onChangeText={nextValue => this.setState({email: nextValue})}
                   accessoryLeft={EmailIcon}
                   autoCapitalize="none"
+                  textStyle={styles.textInput}
+                  style={styles.input}
               />
               <Input
                   placeholder="Password"
@@ -67,6 +75,8 @@ export default class RegisterScreen extends Component {
                   secureTextEntry={true}
                   accessoryLeft={LockIcon}
                   autoCapitalize="none"
+                  textStyle={styles.textInput}
+                  style={styles.input}
               />
 
               <View style={LoginStyles.bottomView}>
@@ -127,7 +137,6 @@ const LoginStyles = StyleSheet.create({
     flex: 2,
     width: '100%',
     alignItems: 'center',
-    justifyContent: 'center',
     padding: 20,
   },
   button: {
