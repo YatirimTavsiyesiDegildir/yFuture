@@ -40,12 +40,12 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     },
     titleTextMedium: {
-        fontSize: 30,
+        fontSize: 20,
         fontWeight: 'bold',
         width: '100%',
         marginTop: 10,
         marginBottom: 10,
-        textAlign: 'center'
+        textAlign: 'left'
     }
 });
 
