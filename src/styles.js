@@ -77,6 +77,13 @@ const styles = StyleSheet.create({
     divider: {
         height: 20
     },
+    friendName: {
+        fontSize: 20,
+        color: 'grey',
+        marginLeft: 20,
+        flex: 1,
+        fontWeight: 'bold'
+    }
 });
 
 export default styles;

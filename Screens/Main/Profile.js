@@ -22,6 +22,8 @@ const LogoutIcon = props => <Icon {...props} name="log-out"/>;
 const LockIcon = props => <Icon {...props} name="lock"/>;
 import styles from "../../src/styles";
 
+let date = new Date();
+
 export default class ProfileScreen extends Component {
     constructor(props) {
         super(props);
@@ -79,13 +81,13 @@ export default class ProfileScreen extends Component {
                 <Divider/>
                 <Layout style={styles.layout}>
                     <ScrollView style={styles.container}>
-                        <Card style={[styles.card,{alignItems: 'center'}]}>
+                        <Card style={[styles.card, {alignItems: 'center'}]}>
                             <View style={ProfileStyles.avatarContainer}>
                                 <View style={ProfileStyles.avatarInnerContainer}>
                                     <Image
                                         style={ProfileStyles.avatar}
                                         source={{
-                                            uri: 'https://thispersondoesnotexist.com/image'
+                                            uri: 'https://thispersondoesnotexist.com/image?ts=' + date.getMinutes().toString() + date.getSeconds().toString()
                                         }}
                                     />
                                 </View>

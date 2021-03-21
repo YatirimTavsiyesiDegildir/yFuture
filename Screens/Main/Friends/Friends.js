@@ -29,7 +29,12 @@ export default class FriendsScreen extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            friends: [],
+            friends: [
+                {name: 'Cinar Kiziltepe'}
+                , {name: 'Ada Topcu'}
+                , {name: 'Ege Kaan Gurkan'}
+                , {name: 'Yashar Kardar'}
+                , {name: 'Beril Karabulut'}],
             friendRequests: [],
             refreshing: false,
             renderData: [],
@@ -38,7 +43,7 @@ export default class FriendsScreen extends Component {
     }
 
     componentDidMount() {
-        this.getList();
+        //this.getList();
     }
 
     getFriends() {
@@ -78,6 +83,7 @@ export default class FriendsScreen extends Component {
     }
 
     renderFriendCard = ({item, index}) => {
+        console.log(Math.random().toString());
         return (
             <FriendCard
                 cardProps={item}
@@ -107,25 +113,20 @@ export default class FriendsScreen extends Component {
                 />
                 <Divider/>
                 <Layout
-                    style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-                    {global.friendsAdded ? (
-                        <List
-                            style={FriendsStyles.listContainer}
-                            data={this.state.friends}
-                            extraData={this.state.friends}
-                            renderItem={this.renderFriendCard}
-                            refreshControl={
-                                <RefreshControl
-                                    refreshing={this.state.refreshing}
-                                    onRefresh={() => this.getFriends()}
-                                />
-                            }
-                        />
-                    ) : (
-                        <Text category={'h5'} style={{textAlign: 'center'}}>
-                            Henüz hiç arkadaşın yok.
-                        </Text>
-                    )}
+                    style={styles.layout}>
+                    <List
+                        style={FriendsStyles.listContainer}
+                        data={this.state.friends}
+                        extraData={this.state.friends}
+                        renderItem={this.renderFriendCard}
+                        refreshControl={
+                            <RefreshControl
+                                refreshing={this.state.refreshing}
+                                onRefresh={() => this.getFriends()}
+                            />
+                        }
+                    />
+
                 </Layout>
                 <Modal
                     visible={this.state.visible}
@@ -160,8 +161,6 @@ const FriendsStyles = StyleSheet.create({
     listContainer: {
         flex: 1,
         width: '100%',
-        paddingLeft: 20,
-        paddingRight: 20,
     },
     container: {},
     backdrop: {
