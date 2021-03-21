@@ -15,13 +15,15 @@ import {
   Text,
 } from '@ui-kitten/components';
 
+const PersonIcon = props => <Icon {...props} name="person-outline" />;
+const HashIcon = props => <Icon {...props} name="hash-outline" />;
 const EmailIcon = props => <Icon {...props} name="email" />;
 const LockIcon = props => <Icon {...props} name="lock" />;
 
 export default class RegisterScreen extends Component {
   constructor(props) {
     super(props);
-    this.state = {email: '', password: '', loading: false};
+    this.state = {name: '', tckn: '', email: '', password: '', loading: false};
   }
   navigateLogin = () => {
     this.props.navigation.navigate('Login');
@@ -36,6 +38,21 @@ export default class RegisterScreen extends Component {
               <Text category="h1" style={{marginBottom: 30, marginTop: 30}}>
                 Register a New User
               </Text>
+              <Input
+                  placeholder="Name"
+                  value={this.state.name}
+                  onChangeText={nextValue => this.setState({name: nextValue})}
+                  accessoryLeft={PersonIcon}
+                  autoCapitalize="words"
+              />
+              <Input
+                  placeholder="National Identification Number"
+                  value={this.state.tckn}
+                  onChangeText={nextValue => this.setState({tckn: nextValue})}
+                  accessoryLeft={HashIcon}
+                  autoCapitalize="none"
+                  keyboardType={"number-pad"}
+              />
               <Input
                   placeholder="E-mail"
                   value={this.state.email}
@@ -58,6 +75,8 @@ export default class RegisterScreen extends Component {
                     onPress={() => {
                       this.setState({loading: true});
                       this.props.route.params.mainFunctions.register(
+                          this.state.name,
+                          this.state.tckn,
                           this.state.email,
                           this.state.password,
                           () => {
