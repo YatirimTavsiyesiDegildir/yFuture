@@ -14,7 +14,7 @@ import auth from '@react-native-firebase/auth';
 
 /**GLOBALS START*/
 global.email = '';
-global.userId = '';
+global.user_id = '';
 global.tckn = '';
 global.realName = '';
 global.password = '';
@@ -40,7 +40,7 @@ export default class App extends Component {
         StoreData('real_name', '');
         StoreData('password', '');
         global.email = '';
-        global.userId = '';
+        global.user_id = '';
         global.tckn = '';
         global.realName = '';
         global.password = '';
@@ -49,12 +49,12 @@ export default class App extends Component {
 
     saveLoginInfo(user) {
         StoreData('email', user.email);
-        StoreData('user_id', user.id);
+        StoreData('user_id', user.user_id);
         StoreData('tckn', user.tckn);
         StoreData('real_name', user.name);
         StoreData('password', user.password);
         global.email = user.email;
-        global.userId = user.id;
+        global.user_id = user.user_id;
         global.tckn = user.tckn;
         global.realName = user.name;
         global.password = user.password;

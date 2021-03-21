@@ -76,7 +76,7 @@ export default class ProfileScreen extends Component {
                 source={{
                   uri:
                     'https://project-lyda.s3.eu-central-1.amazonaws.com/pp/' +
-                    global.userId +
+                    global.user_id +
                     '.png',
                 }}
               />
