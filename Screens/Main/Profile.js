@@ -110,7 +110,7 @@ export default class ProfileScreen extends Component {
                                     'https://project-lyda.s3.eu-central-1.amazonaws.com/badges/flag.jpg',
                                 )}
                                 {this.ModalWithBackdropShowcase(
-                                    'Tebrikler! Lyda hesabını bir banka hesabına bağladın.',
+                                    'Tebrikler! yFuture hesabını bir banka hesabına bağladın.',
                                     'https://project-lyda.s3.eu-central-1.amazonaws.com/badges/natural.jpeg',
                                 )}
                                 {this.ModalWithBackdropShowcase(
@@ -178,7 +178,8 @@ const ProfileStyles = StyleSheet.create({
     },
     avatarContainer: {
         padding: 16,
-        height: 200
+        height: 200,
+        marginLeft: 30
     },
     infoContainer: {
         alignItems: 'center',

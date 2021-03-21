@@ -12,9 +12,9 @@ const FriendCard = props => (
                 CardStyles.cardInnerContainer,
                 CardStyles.cardInnerContainerFriend,
             ]}>
-            <View style={CardStyles.friendAvatarContainer}>
+            <View style={styles.friendAvatarContainer}>
                 <Image
-                    style={CardStyles.friendAvatar}
+                    style={styles.friendAvatar}
                     source={{
                         uri: 'https://thispersondoesnotexist.com/image?ts=' + Math.random().toString()
                     }}

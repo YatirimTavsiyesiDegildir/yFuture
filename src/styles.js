@@ -83,7 +83,35 @@ const styles = StyleSheet.create({
         marginLeft: 20,
         flex: 1,
         fontWeight: 'bold'
-    }
+    },
+    targetTitle: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: 'grey',
+        width: '100%',
+        textAlign: 'left',
+        margin: 3,
+        marginLeft: 0
+    },
+
+    friendAvatarContainer: {
+        width: 60,
+        height: 60,
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 1,
+            height: 1,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 1,
+        elevation: 1,
+        margin: 5
+    },
+    friendAvatar: {
+        height: '100%',
+        aspectRatio: 1,
+        borderRadius: 30,
+    },
 });
 
 export default styles;

@@ -5,6 +5,7 @@ import {
     View,
     Image,
     TouchableOpacity,
+    ScrollView
 } from 'react-native';
 import {
     Divider,
@@ -18,41 +19,22 @@ import {
     Card,
 } from '@ui-kitten/components';
 import styles from "../../../src/styles";
+import * as Progress from 'react-native-progress';
 
+const OtherPlusIcon = props => <Icon {...props} name="plus-outline"/>;
+
+let i = 0;
+let date = new Date();
 
 export default class TargetScreen extends Component {
     constructor(props) {
         super(props);
-        this.state = {targets: []};
+        this.state = {targets: [], progress1: 0, progress2: 0, progress3: 0};
     }
 
-    ModalWithBackdropShowcase = (badgeString, imgUri) => {
-        return (
-            <View style={ProfileStyles.newContainer}>
-                <TouchableOpacity
-                    onPress={() =>
-                        this.setState({visible: true, badgeText: badgeString})
-                    }>
-                    <Image
-                        style={{height: 100, width: 100, margin: 15}}
-                        source={{
-                            uri: imgUri,
-                        }}
-                    />
-                </TouchableOpacity>
-
-                <Modal
-                    visible={this.state.visible}
-                    backdropStyle={ProfileStyles.backdrop}
-                    onBackdropPress={() => this.setState({visible: false})}>
-                    <Card disabled={true} style={{margin: 10}}>
-                        <Text>{this.state.badgeText}</Text>
-                    </Card>
-                </Modal>
-            </View>
-        );
-    };
-
+    componentDidMount() {
+        this.setState({progress1: 0.9, progress2: 0.21, progress3: 0.85})
+    }
 
     PlusIcon = props => <Icon {...props} name="plus-circle-outline"/>;
 
@@ -77,20 +59,83 @@ export default class TargetScreen extends Component {
                     accessoryRight={this.renderRightActions}
                 />
                 <Divider/>
-                <Layout style={ProfileStyles.container}>
-                    <View style={ProfileStyles.logoutContainer}>
+                <Layout style={styles.layout}>
+                    <ScrollView style={styles.container}>
+                        <Card style={[styles.card, {alignItems: 'flex-start'}]}>
+                            <Text category={'h1'} style={[styles.titleTextMedium, {marginTop: 0}]}>Oyun
+                                Bilgisayari</Text>
+                            <Text category={'h1'} style={[styles.targetTitle, {color: "#7A0A20"}]}>Hedef: <Text>10000
+                                TL</Text></Text>
+                            <Text category={'h1'}
+                                  style={[styles.targetTitle, {color: "#0B6F11"}]}>Biriktirilen: <Text>9000
+                                TL</Text></Text>
+                            <Progress.Bar progress={this.state.progress1} width={310} animated={true}
+                                          color={"#0B6F11"}/>
+                        </Card>
+                        <View style={styles.divider}/>
+                        <Card style={[styles.card, {alignItems: 'flex-start'}]}>
+                            <Text category={'h1'} style={[styles.titleTextMedium, {marginTop: 0}]}>Bluetooth
+                                Kulaklik</Text>
+                            <Text category={'h1'} style={[styles.targetTitle, {color: "#7A0A20"}]}>Hedef: <Text>700
+                                TL</Text></Text>
+                            <Text category={'h1'}
+                                  style={[styles.targetTitle, {color: "#0B6F11"}]}>Biriktirilen: <Text>150
+                                TL</Text></Text>
+                            <Progress.Bar progress={this.state.progress2} width={310} animated={true}
+                                          color={"#0B6F11"}/>
+                        </Card>
+                        <View style={styles.divider}/>
+                        <Card style={[styles.card, {alignItems: 'flex-start'}]}>
+                            <Text category={'h1'}
+                                  style={[styles.targetTitle, {color: "grey", fontSize: 14}]}>Toplu Birikim</Text>
+                            <Text category={'h1'} style={[styles.titleTextMedium, {marginTop: 0}]}>Kayak Tatili</Text>
+                            <Text category={'h1'} style={[styles.targetTitle, {color: "#7A0A20"}]}>Hedef: <Text>4500
+                                TL</Text></Text>
+                            <Text category={'h1'}
+                                  style={[styles.targetTitle, {color: "#0B6F11"}]}>Biriktirilen: <Text>3900
+                                TL</Text></Text>
+                            <Progress.Bar progress={this.state.progress3} width={310} animated={true}
+                                          color={"#0B6F11"}/>
+                            <View style={{flexDirection: 'row', width: '100%', marginTop: 8}}>
+                                <View style={styles.friendAvatarContainer}>
+                                    <Image
+                                        style={styles.friendAvatar}
+                                        source={{
+                                            uri: 'https://thispersondoesnotexist.com/image?ts=' + date.getMinutes().toString() + date.getSeconds().toString()
+                                        }}
+                                    />
+                                </View>
+                                <View style={styles.friendAvatarContainer}>
+                                    <Image
+                                        style={styles.friendAvatar}
+                                        source={{
+                                            uri: 'https://thispersondoesnotexist.com/image?ts=' + date.getSeconds().toString()
+                                        }}
+                                    />
+                                </View>
+                                <View style={styles.friendAvatarContainer}>
+                                    <Image
+                                        style={styles.friendAvatar}
+                                        source={{
+                                            uri: 'https://thispersondoesnotexist.com/image?ts=' + (i++).toString()
+                                        }}
+                                    />
+                                </View>
+                                <View style={styles.friendAvatarContainer}>
+                                    <View
+                                        style={[styles.friendAvatar, {
+                                            backgroundColor: "#ababab",
+                                            justifyContent: 'center'
+                                        }]}
 
-                        <View
-                            style={{
-                                height: '100%',
-                                width: '100%',
-                                flexDirection: 'row',
-                                justifyContent: 'center',
-                                marginTop: 20,
-                            }}>
-
-                        </View>
-                    </View>
+                                    >
+                                        <OtherPlusIcon fill={'#222'} style={{height: 40, marginTop: 0}}/>
+                                    </View>
+                                </View>
+                            </View>
+                        </Card>
+                        <View style={{height: 75}}/>
+                    </ScrollView>
                 </Layout>
             </SafeAreaView>
         );
