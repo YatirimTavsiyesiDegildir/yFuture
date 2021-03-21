@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -17,30 +17,25 @@ import {
   Button,
   Card,
 } from '@ui-kitten/components';
-const LogoutIcon = props => <Icon {...props} name="log-out" />;
 
-export default class ProfileScreen extends Component {
+
+
+
+export default class TargetScreen extends Component {
   constructor(props) {
     super(props);
-    this.state = {visible: false, badgeText: ''};
+    this.state = { targets: [] };
   }
-
-  BackAction = () => (
-    <TopNavigationAction
-      icon={LogoutIcon}
-      onPress={() => this.props.route.params.mainFunctions.logout()}
-    />
-  );
 
   ModalWithBackdropShowcase = (badgeString, imgUri) => {
     return (
       <View style={styles.container}>
         <TouchableOpacity
           onPress={() =>
-            this.setState({visible: true, badgeText: badgeString})
+            this.setState({ visible: true, badgeText: badgeString })
           }>
           <Image
-            style={{height: 100, width: 100, margin: 15}}
+            style={{ height: 100, width: 100, margin: 15 }}
             source={{
               uri: imgUri,
             }}
@@ -50,8 +45,8 @@ export default class ProfileScreen extends Component {
         <Modal
           visible={this.state.visible}
           backdropStyle={styles.backdrop}
-          onBackdropPress={() => this.setState({visible: false})}>
-          <Card disabled={true} style={{margin: 10}}>
+          onBackdropPress={() => this.setState({ visible: false })}>
+          <Card disabled={true} style={{ margin: 10 }}>
             <Text>{this.state.badgeText}</Text>
           </Card>
         </Modal>
@@ -59,37 +54,33 @@ export default class ProfileScreen extends Component {
     );
   };
 
+
+  PlusIcon = props => <Icon {...props} name="plus-circle-outline" />;
+
+  renderRightActions = () => (
+    <React.Fragment>
+      <TopNavigationAction
+        icon={this.PlusIcon}
+        onPress={() => {
+          this.props.navigation.navigate('AddTarget');
+          this.setState({ visible: true });
+        }}
+      />
+    </React.Fragment>
+  );
+
   render() {
     return (
-      <SafeAreaView style={{flex: 1}}>
+      <SafeAreaView style={{ flex: 1 }}>
         <TopNavigation
-          title="Profilim"
+          title="Birikim Hedeflerim"
           alignment="center"
-          accessoryRight={this.BackAction}
+          accessoryRight={this.renderRightActions}
         />
         <Divider />
         <Layout style={ProfileStyles.container}>
-          <View style={ProfileStyles.avatarContainer}>
-            <View style={ProfileStyles.avatarInnerContainer}>
-              <Image
-                style={ProfileStyles.avatar}
-                source={{
-                  uri:
-                    'https://project-lyda.s3.eu-central-1.amazonaws.com/pp/' +
-                    global.user_id +
-                    '.png',
-                }}
-              />
-            </View>
-          </View>
-          <View style={ProfileStyles.infoContainer}>
-            <Text category={'h1'}>{global.realName}</Text>
-            <Text category={'label'} appearance={'hint'}>
-              {'@' + global.username}
-            </Text>
-          </View>
           <View style={ProfileStyles.logoutContainer}>
-            <Text category={'h3'}>Başarılarım</Text>
+
             <View
               style={{
                 height: '100%',
@@ -98,18 +89,7 @@ export default class ProfileScreen extends Component {
                 justifyContent: 'center',
                 marginTop: 20,
               }}>
-              {this.ModalWithBackdropShowcase(
-                'Tebrikler! Tüm aboneliklerin için hatırlatıcı kurdun.',
-                'https://project-lyda.s3.eu-central-1.amazonaws.com/badges/clap.jpeg',
-              )}
-              {this.ModalWithBackdropShowcase(
-                'Tebrikler! Bir hafta boyunca arkadaşlarından daha tasarruflu davrandın.',
-                'https://project-lyda.s3.eu-central-1.amazonaws.com/badges/flag.jpg',
-              )}
-              {this.ModalWithBackdropShowcase(
-                'Tebrikler! Lyda hesabını bir banka hesabına bağladın.',
-                'https://project-lyda.s3.eu-central-1.amazonaws.com/badges/natural.jpeg',
-              )}
+
             </View>
           </View>
         </Layout>
