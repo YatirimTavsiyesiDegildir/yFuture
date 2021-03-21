@@ -99,15 +99,12 @@ export default class App extends Component {
                     if (result.data.users.length === 1) {
                         let user = result.data.users[0];
                         this.saveLoginInfo(user);
-                        callback();
                     } else {
                         Alert.alert('Email veya sifre yanlis.');
-                        callback();
                     }
                 })
                 .catch(result => {
                     Alert.alert('Bir hata olustu.');
-                    callback();
                 });
             })
             .catch(error => {
