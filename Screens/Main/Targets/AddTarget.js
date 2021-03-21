@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {SafeAreaView, StyleSheet, Alert, RefreshControl, View} from 'react-native';
+import {SafeAreaView, StyleSheet, Alert, RefreshControl, View, ScrollView, Image} from 'react-native';
 import {
     Divider,
     Layout,
@@ -8,7 +8,7 @@ import {
     List,
     ListItem,
     Icon,
-    TopNavigationAction, Input, Button,
+    TopNavigationAction, Input, Button, Card,
 } from '@ui-kitten/components';
 import {BankApiCard} from '../../../Components/Card';
 import {FetchGet} from '../../../Utils/Fetch';
@@ -51,41 +51,50 @@ export default class AddTarget extends Component {
                     accessoryLeft={this.renderLeftActions}
                 />
                 <Divider/>
-                <Layout
-                    style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-                    <Input
-                        placeholder="Hedef"
-                        value={this.state.name}
-                        onChangeText={nextValue => this.setState({name: nextValue})}
-                        accessoryLeft={TagIcon}
-                        autoCapitalize="none"
-                    />
-                    <Input
-                        placeholder="Birikim Hedefi"
-                        value={this.state.target}
-                        onChangeText={nextValue => this.setState({target: nextValue})}
-                        accessoryLeft={HashIcon}
-                        autoCapitalize="none"
-                        keyboardType={"number-pad"}
-                    />
-                    <Input
-                        placeholder="Elinizdeki Miktar"
-                        value={this.state.stored}
-                        onChangeText={nextValue => this.setState({stored: nextValue})}
-                        accessoryLeft={HashIcon}
-                        autoCapitalize="none"
-                        keyboardType={"number-pad"}
-                    />
-                    <Button
-                        onPress={() => {
-                            console.log({
-                                target_name: this.state.name,
-                                target_value: this.state.target,
-                                stored_value: this.state.stored,
-                                user_id: global.user_id,
-                            })
-                            client.mutate({
-                                mutation: gql`
+                <Layout style={styles.layout}>
+                    <ScrollView style={styles.container}>
+
+                        <View style={styles.divider}/>
+                        <Card style={[styles.card]}>
+                            <Text category={'h3'} style={styles.titleTextMedium}>Yeni Birikim Hedefiniz: </Text>
+                            <Input
+                                placeholder="Hedef"
+                                value={this.state.name}
+                                onChangeText={nextValue => this.setState({name: nextValue})}
+                                accessoryLeft={TagIcon}
+                                autoCapitalize="none"
+                                style={styles.input}
+                            />
+                            <Input
+                                placeholder="Birikim Hedefi"
+                                value={this.state.target}
+                                onChangeText={nextValue => this.setState({target: nextValue})}
+                                accessoryLeft={HashIcon}
+                                autoCapitalize="none"
+                                keyboardType={"number-pad"}
+                                style={styles.input}
+                            />
+                            <Input
+                                placeholder="Elinizdeki Miktar"
+                                value={this.state.stored}
+                                onChangeText={nextValue => this.setState({stored: nextValue})}
+                                accessoryLeft={HashIcon}
+                                autoCapitalize="none"
+                                keyboardType={"number-pad"}
+                                style={styles.input}
+                            />
+                            <View style={{width: '100%', alignItems: 'center', justifyContent: 'center',flexDirection: 'row'}}>
+                                <Button
+                                    style={styles.submitButton}
+                                    onPress={() => {
+                                        console.log({
+                                            target_name: this.state.name,
+                                            target_value: this.state.target,
+                                            stored_value: this.state.stored,
+                                            user_id: global.user_id,
+                                        })
+                                        client.mutate({
+                                            mutation: gql`
                                     mutation MyMutation ($stored_value: String, $target_name:String, $target_value: String, $user_id:String,) {
                                         insert_saving_target(objects: {stored_value: $stored_value, target_name: $target_name, target_value: $target_value, user_id: $user_id}) {
                                             returning {
@@ -99,33 +108,23 @@ export default class AddTarget extends Component {
                                     }
 
                                 `,
-                                variables: {
-                                    target_name: this.state.name,
-                                    target_value: this.state.target,
-                                    stored_value: this.state.stored,
-                                    user_id: global.user_id,
-                                },
-                            })
-                        }}>
-                        {'Ekle'}
-                    </Button>
+                                            variables: {
+                                                target_name: this.state.name,
+                                                target_value: this.state.target,
+                                                stored_value: this.state.stored,
+                                                user_id: global.user_id,
+                                            },
+                                        })
+                                    }}>
+                                    <Text style={styles.submitButtonText}>Ekle</Text>
+                                </Button>
+                            </View>
+                        </Card>
+                        <View style={{height: 75}}/>
+                    </ScrollView>
                 </Layout>
             </SafeAreaView>
         );
     }
 }
 
-const AddTargetStyles = StyleSheet.create({
-    listContainer: {
-        flex: 1,
-        width: '100%',
-        paddingLeft: 20,
-        paddingRight: 20,
-    },
-    button: {
-        width: 200,
-        height: 45,
-        marginTop: 0,
-        marginBottom: 20,
-    },
-});

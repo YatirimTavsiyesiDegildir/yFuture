@@ -7,7 +7,8 @@ const styles = StyleSheet.create({
         height: 40,
     },
     input: {
-        margin: 5
+        margin: 5,
+        width: '100%'
     },
     titleText: {
         fontSize: 40,
@@ -56,10 +57,10 @@ const styles = StyleSheet.create({
         height: 12,
         marginVertical: 5
     },
-    layout: {flex: 1, justifyContent: 'center', alignItems: 'center'},
-    container: {flex: 1, width: '100%'},
+    layout: {flex: 1, justifyContent: 'center', alignItems: 'center', width: '100%'},
+    container: {flex: 1, width: '100%', paddingTop: 16},
     card: {
-        marginHorizontal: 20,
+        marginHorizontal: 16,
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
@@ -69,7 +70,9 @@ const styles = StyleSheet.create({
         shadowRadius: 3.84,
 
         elevation: 5,
-        borderRadius: 10
+        borderRadius: 10,
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     divider: {
         height: 20

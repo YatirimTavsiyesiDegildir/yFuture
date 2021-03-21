@@ -76,10 +76,10 @@ export default class GraphsScreen extends Component {
                             />
                         }>
                         {global.subscriptionWarningEnabled || this.state.visible2 ? (
-                            <SubscriptionWarningCard/>
-                        ) : (
-                            <View style={{height: 20}}/>
-                        )}
+                                <SubscriptionWarningCard/>
+                            ) :
+                            null
+                        }
                         <Card style={styles.card}>
                             <Text category="h4" style={styles.titleTextMedium}>
                                 Aylık Birikim Degişimi

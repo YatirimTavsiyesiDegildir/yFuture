@@ -79,7 +79,6 @@ export default class ProfileScreen extends Component {
                 <Divider/>
                 <Layout style={styles.layout}>
                     <ScrollView style={styles.container}>
-                        <View style={{height: 20}}/>
                         <Card style={[styles.card,{alignItems: 'center'}]}>
                             <View style={ProfileStyles.avatarContainer}>
                                 <View style={ProfileStyles.avatarInnerContainer}>
