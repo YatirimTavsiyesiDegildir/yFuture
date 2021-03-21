@@ -105,6 +105,7 @@ export default class App extends Component {
                 })
                 .catch(result => {
                     Alert.alert('Bir hata olustu.');
+                    console.log(result);
                 });
             })
             .catch(error => {
@@ -141,9 +142,10 @@ export default class App extends Component {
                         }
                     }
                 `,
-                variables: {user},
+                variables: user,
             })
             .then(result => {
+                console.log(result);
                 if (result.data.users.length === 1) {
                     let user = result.data.users[0];
                     this.saveLoginInfo(user);
@@ -154,6 +156,7 @@ export default class App extends Component {
                 }
             })
             .catch(result => {
+                console.log(result);
                 Alert.alert('Bir hata olustu.');
                 callback();
             });
