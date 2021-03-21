@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -19,26 +19,26 @@ import {
 } from '@ui-kitten/components';
 
 
+
+
 export default class TargetScreen extends Component {
   constructor(props) {
     super(props);
-    this.state = {visible: false, badgeText: ''};
+    this.state = { visible: false, badgeText: '' };
   }
 
-  BackAction = () => (
-    <TopNavigationAction
-    />
-  );
+
+
 
   ModalWithBackdropShowcase = (badgeString, imgUri) => {
     return (
       <View style={styles.container}>
         <TouchableOpacity
           onPress={() =>
-            this.setState({visible: true, badgeText: badgeString})
+            this.setState({ visible: true, badgeText: badgeString })
           }>
           <Image
-            style={{height: 100, width: 100, margin: 15}}
+            style={{ height: 100, width: 100, margin: 15 }}
             source={{
               uri: imgUri,
             }}
@@ -48,8 +48,8 @@ export default class TargetScreen extends Component {
         <Modal
           visible={this.state.visible}
           backdropStyle={styles.backdrop}
-          onBackdropPress={() => this.setState({visible: false})}>
-          <Card disabled={true} style={{margin: 10}}>
+          onBackdropPress={() => this.setState({ visible: false })}>
+          <Card disabled={true} style={{ margin: 10 }}>
             <Text>{this.state.badgeText}</Text>
           </Card>
         </Modal>
@@ -57,18 +57,33 @@ export default class TargetScreen extends Component {
     );
   };
 
+
+  AddIcon = props => <Icon {...props} name="plus-circle-outline" />;
+
+  renderRightActions = () => (
+    <React.Fragment>
+      <TopNavigationAction
+        icon={this.AddIcon}
+        onPress={() => {
+          this.props.navigation.navigate('AddTarget');
+          this.setState({ visible: true });
+        }}
+      />
+    </React.Fragment>
+  );
+
   render() {
     return (
-      <SafeAreaView style={{flex: 1}}>
+      <SafeAreaView style={{ flex: 1 }}>
         <TopNavigation
-          title="Profilim"
+          title="Birikim Hedeflerim"
           alignment="center"
           accessoryRight={this.BackAction}
         />
         <Divider />
         <Layout style={ProfileStyles.container}>
           <View style={ProfileStyles.logoutContainer}>
-            <Text category={'h3'}>Hedeflerim</Text>
+
             <View
               style={{
                 height: '100%',
@@ -77,7 +92,7 @@ export default class TargetScreen extends Component {
                 justifyContent: 'center',
                 marginTop: 20,
               }}>
-              
+
             </View>
           </View>
         </Layout>
