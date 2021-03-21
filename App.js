@@ -93,7 +93,7 @@ export default class App extends Component {
                             }
                         }
                     `,
-                    variables: {user},
+                    variables: user,
                 })
                 .then(result => {
                     if (result.data.users.length === 1) {
