@@ -262,7 +262,7 @@ const CardStyles = StyleSheet.create({
   content: {
     flexDirection: 'column',
     alignItems: 'center',
-    padding: 10,
+    padding: 16,
   },
   backdrop: {
     backgroundColor: 'rgba(0, 0, 0, 0.5)',

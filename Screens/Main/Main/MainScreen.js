@@ -42,6 +42,7 @@ export default class GraphsScreen extends Component {
 
 
     PlusIcon = props => <Icon {...props} name="plus-outline"/>;
+    BellIcon = props => <Icon {...props}  name="bell-outline"/>;
 
     renderRightActions = () => (
         <React.Fragment>
@@ -55,6 +56,18 @@ export default class GraphsScreen extends Component {
         </React.Fragment>
     );
 
+    renderLeftActions = () => (
+        <React.Fragment>
+            <TopNavigationAction
+                icon={this.BellIcon}
+                onPress={() => {
+                    this.props.navigation.navigate('NotificationsScreen');
+                    this.setState({visible: true});
+                }}
+            />
+        </React.Fragment>
+    );
+
     render() {
         return (
             <SafeAreaView style={{flex: 1}}>
@@ -62,6 +75,7 @@ export default class GraphsScreen extends Component {
                     title={<Text style={styles.miniTitle}>Finansal Durumum</Text>}
                     alignment="center"
                     accessoryRight={this.renderRightActions}
+                    accessoryLeft={this.renderLeftActions}
                 />
                 <Divider/>
                 <Layout
@@ -75,11 +89,6 @@ export default class GraphsScreen extends Component {
                                 onRefresh={() => this.setState({refreshing: false})}
                             />
                         }>
-                        {global.subscriptionWarningEnabled || this.state.visible2 ? (
-                                <SubscriptionWarningCard/>
-                            ) :
-                            null
-                        }
                         <Card style={styles.card}>
                             <Text category="h4" style={styles.titleTextMedium}>
                                 Aylık Birikim Degişimi
