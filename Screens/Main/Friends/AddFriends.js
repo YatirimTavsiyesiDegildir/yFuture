@@ -39,7 +39,7 @@ export default class AddFriendsScreen extends Component {
     this.setState({refreshing: true, input: ''});
     FetchGet(
       '/get_users_by_search',
-      {user_id: global.userId, search_phrase: ''},
+      {user_id: global.user_id, search_phrase: ''},
       response => {
         this.setState({refreshing: false});
         let users = JSON.parse(response.users);

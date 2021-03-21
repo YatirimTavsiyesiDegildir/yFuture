@@ -7,7 +7,7 @@ import {
   Icon,
 } from '@ui-kitten/components';
 import ProfileScreen from '../Main/Profile';
-import CouponsScreen from '../Main/Main/MainScreen';
+import GraphsScreen from '../Main/Main/MainScreen';
 import AddBankAPI from '../Main/Main/AddBankAPI';
 import FriendsScreen from '../Main/Friends/Friends';
 import AddFriendsScreen from '../Main/Friends/AddFriends';
@@ -28,7 +28,7 @@ const CouponIcon = props => <Icon {...props} name="activity-outline" />;
 
 const CouponsStack = props => (
   <Stack.Navigator headerMode="none">
-    <Stack.Screen name="CouponsScreen" component={CouponsScreen} />
+    <Stack.Screen name="GraphsScreen" component={GraphsScreen} />
     <Stack.Screen name="AddBankAPI" component={AddBankAPI} />
     <Stack.Screen name="PastPurchasesScreen" component={PastPurchasesScreen} />
   </Stack.Navigator>
@@ -64,7 +64,7 @@ const TabNavigator = props => (
   <Navigator tabBar={props => <BottomTabBar {...props} />}>
     <Screen name="FriendsScreen" component={FriendsStack} />
     <Screen name="TargetScreen" component={TargetStack} />
-    <Screen name="CouponsScreen" component={CouponsStack} />
+    <Screen name="GraphsScreen" component={CouponsStack} />
     <Screen
       name="ProfileScreen"
       component={ProfileScreen}

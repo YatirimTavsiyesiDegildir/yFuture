@@ -56,7 +56,7 @@ export default class FriendsScreen extends Component {
             }
           `,
           variables: {
-            id: global.userId,
+            id: global.user_id,
           },
         })
         .then(result => {

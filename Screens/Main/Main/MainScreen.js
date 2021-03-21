@@ -12,28 +12,24 @@ import {
   Divider,
   Layout,
   TopNavigation,
-  List,
   Icon,
   TopNavigationAction,
   Text,
 } from '@ui-kitten/components';
-import CouponCard from '../../../Components/Card';
-import {FetchGet} from '../../../Utils/Fetch';
 
 import {
   LineChart,
-  BarChart,
   PieChart,
-  ProgressChart,
   ContributionGraph,
-  StackedBarChart,
 } from 'react-native-chart-kit';
 import {
   SubscriptionWarningCard,
   FriendWarningCard,
 } from '../../../Components/Card';
 
-export default class CouponsScreen extends Component {
+import {OurProgressChart} from "../../../src/component/ProgressChart";
+
+export default class GraphsScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {visible: false, visible2: false, refreshing: false};
@@ -41,16 +37,6 @@ export default class CouponsScreen extends Component {
 
   componentDidMount() {}
 
-  renderItem = ({item, index}) => (
-    <CouponCard
-      cardProps={item}
-      openQRScreen={() => this.openQRScreen(item.code)}
-    />
-  );
-
-  openQRScreen(code) {
-    this.props.navigation.navigate('ShowQRScreen', {code: code});
-  }
 
   PlusIcon = props => <Icon {...props} name="plus-outline" />;
 
@@ -80,7 +66,7 @@ export default class CouponsScreen extends Component {
           {//global.cardNumber != null || this.state.visible
             true ? (
             <ScrollView
-              style={CouponsStyles.listContainer}
+              style={GraphsStyles.listContainer}
               refreshControl={
                 <RefreshControl
                   refreshing={this.state.refreshing}
@@ -92,7 +78,7 @@ export default class CouponsScreen extends Component {
               ) : (
                 <View style={{height: 20}} />
               )}
-              <Text category="h4" style={CouponsStyles.sectionTitle}>
+              <Text category="h4" style={GraphsStyles.sectionTitle}>
                 Aylık Birikim Degişimi
               </Text>
               <LineChart
@@ -134,7 +120,7 @@ export default class CouponsScreen extends Component {
               />
 
               <View style={{height: 40}} />
-              <Text category="h4" style={CouponsStyles.sectionTitle}>
+              <Text category="h4" style={GraphsStyles.sectionTitle}>
                 Bu Ayın Harcamaları
               </Text>
               {global.friendsAdded ? <FriendWarningCard /> : null}
@@ -191,7 +177,7 @@ export default class CouponsScreen extends Component {
               <View style={{flexDirection: 'row', width: '100%'}}>
                 <Text
                   category="h4"
-                  style={[CouponsStyles.sectionTitle, {flex: 1}]}>
+                  style={[GraphsStyles.sectionTitle, {flex: 1}]}>
                   Harcama Alışkanlıkları
                 </Text>
                 <TouchableOpacity
@@ -244,34 +230,11 @@ export default class CouponsScreen extends Component {
                 }}
               />
 
-              <View style={{height: 40}} />
-              <Text category="h4" style={CouponsStyles.sectionTitle}>
+              <View style={GraphsStyles.divider} />
+              <Text category="h4" style={GraphsStyles.sectionTitle}>
                 Birikim Hedefleri
               </Text>
-              <ProgressChart
-                data={{
-                  labels: ['Araba', 'PC', 'Tatil'], // optional
-                  data: [40000 / 300000, 0.6, 0.8],
-                }}
-                width={Dimensions.get('window').width - 40}
-                height={220}
-                strokeWidth={16}
-                radius={20}
-                style={{borderRadius: 16}}
-                chartConfig={{
-                  backgroundColor: '#B3FFD6',
-                  backgroundGradientFrom: '#51F0B0',
-                  backgroundGradientTo: '#00B383',
-                  decimalPlaces: 2, // optional, defaults to 2dp
-                  color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-                  labelColor: (opacity = 1) =>
-                    `rgba(255, 255, 255, ${opacity})`,
-                  paddingLeft: -20,
-                }}
-                hideLegend={false}
-                paddingRight={30}
-                borderRadius={16}
-              />
+              <OurProgressChart/>
               <View style={{height: 75}} />
             </ScrollView>
           ) : (
@@ -285,7 +248,10 @@ export default class CouponsScreen extends Component {
   }
 }
 
-const CouponsStyles = StyleSheet.create({
+const GraphsStyles = StyleSheet.create({
+  divider: {
+    height:40
+  },
   listContainer: {
     flex: 1,
     width: '100%',
