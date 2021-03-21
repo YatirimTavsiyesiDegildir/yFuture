@@ -77,7 +77,8 @@ export default class CouponsScreen extends Component {
         <Divider />
         <Layout
           style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-          {global.cardNumber != null || this.state.visible ? (
+          {//global.cardNumber != null || this.state.visible
+            true ? (
             <ScrollView
               style={CouponsStyles.listContainer}
               refreshControl={
