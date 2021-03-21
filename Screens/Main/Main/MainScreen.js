@@ -65,10 +65,10 @@ export default class GraphsScreen extends Component {
                 />
                 <Divider/>
                 <Layout
-                    style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+                    style={styles.layout}>
 
                     <ScrollView
-                        style={GraphsStyles.listContainer}
+                        style={styles.container}
                         refreshControl={
                             <RefreshControl
                                 refreshing={this.state.refreshing}
@@ -80,7 +80,7 @@ export default class GraphsScreen extends Component {
                         ) : (
                             <View style={{height: 20}}/>
                         )}
-                        <Card>
+                        <Card style={styles.card}>
                             <Text category="h4" style={styles.titleTextMedium}>
                                 Aylık Birikim Degişimi
                             </Text>
@@ -126,7 +126,7 @@ export default class GraphsScreen extends Component {
                         </Card>
 
                         <View style={GraphsStyles.divider}/>
-                        <Card>
+                        <Card style={styles.card}>
                             <Text category="h4" style={styles.titleTextMedium}>
                                 Bu Ayın Harcamaları
                             </Text>
@@ -157,7 +157,7 @@ export default class GraphsScreen extends Component {
                                     },
                                     {
                                         name: 'Fatura',
-                                        amount: 550,
+                                        amount: 100,
                                         color: '#f57c00',
                                         legendFontColor: '#f57c00',
                                         legendFontSize: 15,
@@ -183,13 +183,27 @@ export default class GraphsScreen extends Component {
                                     alignItems: 'center',
                                     justifyContent: 'center',
                                     borderRadius: 16,
+                                    marginTop: -30
                                 }}
+                                paddingLeft={80}
                             />
+                            <View style={styles.spendingRow}>
+                                <View style={styles.spendingDot}/>
+                                <Text>%30 - Market</Text></View>
+                            <View style={styles.spendingRow}>
+                                <View style={[styles.spendingDot, {backgroundColor: "#ffb74d"}]}/>
+                                <Text>%30 - Eglence</Text></View>
+                            <View style={styles.spendingRow}>
+                                <View style={[styles.spendingDot, {backgroundColor: "#ff9800"}]}/>
+                                <Text>%30 - Ulasim</Text></View>
+                            <View style={styles.spendingRow}>
+                                <View style={[styles.spendingDot, {backgroundColor: "#f57c00"}]}/>
+                                <Text>%30 - Faturalar</Text></View>
                         </Card>
 
                         <View style={GraphsStyles.divider}/>
 
-                        <Card>
+                        <Card style={styles.card}>
                             <Text category="h4" style={styles.titleTextMedium}>
                                 Birikim Hedefleri
                             </Text>
@@ -217,8 +231,6 @@ const GraphsStyles = StyleSheet.create({
     listContainer: {
         flex: 1,
         width: '100%',
-        paddingLeft: 20,
-        paddingRight: 20,
     },
     sectionTitle: {
         textAlign: 'center',

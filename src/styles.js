@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
         marginBottom: 20,
     },
     submitButtonText: {
-        fontSize:22,
+        fontSize: 22,
         color: 'white',
         fontWeight: 'bold'
     },
@@ -46,6 +46,30 @@ const styles = StyleSheet.create({
         marginTop: 10,
         marginBottom: 10,
         textAlign: 'left'
+    },
+    spendingDot: {width: 10, height: 10, borderRadius: 5, backgroundColor: '#ffe0b2', marginRight: 10},
+    spendingRow: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        width: '100%',
+        justifyContent: 'center',
+        height: 12,
+        marginVertical: 5
+    },
+    layout: {flex: 1, justifyContent: 'center', alignItems: 'center'},
+    container: {flex: 1, width: '100%'},
+    card: {
+        marginHorizontal: 20,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+
+        elevation: 5,
+        borderRadius: 10
     }
 });
 

@@ -10,7 +10,7 @@ const OurProgressChart = props => (
             labels: ['Araba', 'PC', 'Tatil'], // optional
             data: [40000 / 300000, 0.6, 0.8],
         }}
-        width={Dimensions.get('window').width - 40}
+        width={310}
         height={220}
         strokeWidth={16}
         radius={20}
