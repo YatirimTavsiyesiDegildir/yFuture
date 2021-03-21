@@ -48,6 +48,7 @@ export default class LoginScreen extends Component {
                             <Image
                                 style={LoginStyles.logo}
                                 resizeMode={'contain'}
+                                source={require("../../src/img/logo_transparent.png")}
                             />
                         </View>
                     </View>
@@ -129,7 +130,6 @@ const LoginStyles = StyleSheet.create({
     logo: {
         width: '100%',
         height: '100%',
-        backgroundColor: 'grey'
     },
     inputContainer: {
         flex: 3,
