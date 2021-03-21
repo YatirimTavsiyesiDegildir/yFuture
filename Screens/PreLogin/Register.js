@@ -81,7 +81,7 @@ export default class RegisterScreen extends Component {
 
               <View style={LoginStyles.bottomView}>
                 <Button
-                    style={LoginStyles.button}
+                    style={styles.submitButton}
                     onPress={() => {
                       this.setState({loading: true});
                       this.props.route.params.mainFunctions.register(
@@ -98,7 +98,8 @@ export default class RegisterScreen extends Component {
                       this.state.loading ? this.LoadingIndicator : null
                     }
                     appearance={this.state.loading ? 'ghost' : 'filled'}>
-                  {this.state.loading ? '' : 'Register'}
+                  <Text style={styles.submitButtonText}>
+                    {this.state.loading ? '' : 'Register'}</Text>
                 </Button>
               </View>
             </View>
@@ -138,12 +139,6 @@ const LoginStyles = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     padding: 20,
-  },
-  button: {
-    width: 200,
-    height: 45,
-    marginTop: 0,
-    marginBottom: 20,
   },
   bottomView: {
     position: 'absolute',

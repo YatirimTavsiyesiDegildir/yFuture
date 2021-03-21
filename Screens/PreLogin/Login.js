@@ -5,13 +5,11 @@ import {
     StyleSheet,
     Image,
     View,
-    ActivityIndicator,
 } from 'react-native';
 import {
     Button,
     Divider,
     Layout,
-    TopNavigation,
     Text,
     Input,
     Spinner,
@@ -79,7 +77,7 @@ export default class LoginScreen extends Component {
 
                         <View style={LoginStyles.bottomView}>
                             <Button
-                                style={LoginStyles.button}
+                                style={styles.submitButton}
                                 onPress={() => {
                                     this.setState({loading: true});
                                     this.props.route.params.mainFunctions.logInUser(
@@ -94,7 +92,9 @@ export default class LoginScreen extends Component {
                                     this.state.loading ? this.LoadingIndicator : null
                                 }
                                 appearance={this.state.loading ? 'ghost' : 'filled'}>
-                                {this.state.loading ? '' : 'Giris Yap'}
+                                <Text style={styles.submitButtonText}>
+                                    {this.state.loading ? '' : 'Giris Yap'}
+                                </Text>
                             </Button>
                             <TouchableOpacity onPress={this.navigateRegister}>
                                 <Text style={styles.ghostText}>Hesabin yok mu? Kayit ol!</Text>
@@ -114,8 +114,8 @@ const LoginStyles = StyleSheet.create({
         alignItems: 'center',
     },
     logoOutline: {
-        width: 250,
-        height: 250,
+        width: 200,
+        height: 200,
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 30,
@@ -132,16 +132,10 @@ const LoginStyles = StyleSheet.create({
         backgroundColor: 'grey'
     },
     inputContainer: {
-        flex: 2,
+        flex: 3,
         width: '100%',
         alignItems: 'center',
         padding: 20,
-    },
-    button: {
-        width: 200,
-        height: 45,
-        marginTop: 0,
-        marginBottom: 20,
     },
     bottomView: {
         position: 'absolute',

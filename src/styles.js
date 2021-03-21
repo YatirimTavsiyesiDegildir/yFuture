@@ -26,6 +26,18 @@ const styles = StyleSheet.create({
     miniTitle: {
         fontSize: 15,
         fontWeight: 'bold',
+    },
+    submitButton: {
+        borderRadius: 15,
+        width: 200,
+        height: 50,
+        marginTop: 0,
+        marginBottom: 20,
+    },
+    submitButtonText: {
+        fontSize:22,
+        color: 'white',
+        fontWeight: 'bold'
     }
 });
 
