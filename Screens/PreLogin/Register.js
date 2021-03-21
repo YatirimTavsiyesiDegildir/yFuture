@@ -41,7 +41,7 @@ export default class RegisterScreen extends Component {
                 Kayit Ol
               </Text>
               <Input
-                  placeholder="Name"
+                  placeholder="Isminiz"
                   value={this.state.name}
                   onChangeText={nextValue => this.setState({name: nextValue})}
                   accessoryLeft={PersonIcon}
@@ -50,7 +50,7 @@ export default class RegisterScreen extends Component {
                   style={styles.input}
               />
               <Input
-                  placeholder="National Identification Number"
+                  placeholder="TC. Kimlik Numaraniz"
                   value={this.state.tckn}
                   onChangeText={nextValue => this.setState({tckn: nextValue})}
                   accessoryLeft={HashIcon}
@@ -69,7 +69,7 @@ export default class RegisterScreen extends Component {
                   style={styles.input}
               />
               <Input
-                  placeholder="Password"
+                  placeholder="Sifre"
                   value={this.state.password}
                   onChangeText={nextValue => this.setState({password: nextValue})}
                   secureTextEntry={true}
