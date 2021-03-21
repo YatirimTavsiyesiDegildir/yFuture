@@ -20,7 +20,12 @@ class HomeNavigator extends Component {
             },
           }}
         />
-        <Screen name="Register" component={RegisterScreen} />
+        <Screen name="Register" component={RegisterScreen}initialParams={{
+            mainFunctions: {
+                register: (name, tckn, email, password, callback) =>
+                    this.props.mainFunctions.register(name, tckn, email, password, callback),
+            },
+        }}/>
       </Navigator>
     );
   }
@@ -33,7 +38,9 @@ export default class LoginNavigator extends Component {
         <HomeNavigator
           mainFunctions={{
             logInUser: (email, password, callback) =>
-              this.props.mainFunctions.logInUser(email, password, callback),
+                  this.props.mainFunctions.logInUser(email, password, callback),
+              register: (name, tckn, email, password, callback) =>
+                  this.props.mainFunctions.register(name, tckn, email, password, callback),
           }}
         />
       </NavigationContainer>
