@@ -7,6 +7,7 @@ import LoginNavigator from './Screens/Navigators/LoginNavigator';
 import MainNavigator from './Screens/Navigators/MainNavigator';
 import {StoreData, GetData} from './Utils/AsyncStorage';
 import theme from './src/themes/theme';
+import mapping from './src/assets/mapping';
 import {client} from './back-end/OurApi';
 import {gql} from "@apollo/client";
 import auth from '@react-native-firebase/auth';
@@ -235,7 +236,8 @@ export default class App extends Component {
         return (
             <>
                 <IconRegistry icons={EvaIconsPack}/>
-                <ApplicationProvider {...eva} theme={theme.light}>
+                <ApplicationProvider {...eva} theme={theme.light}
+                                     customMapping={mapping}>
                     {this.state.isLoggedIn ? (
                         <MainNavigator
                             mainFunctions={{

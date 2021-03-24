@@ -20,6 +20,14 @@
 		A4D7EFC1D32D0A97D1E1F99F /* libPods-project_hacktothefuture-project_hacktothefutureTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49029C6EEDF1265F596EBADA /* libPods-project_hacktothefuture-project_hacktothefutureTests.a */; };
 		ABF1AC1B6083C007456F882D /* libPods-project_hacktothefuture-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C9E10F265159AC9F36BD8CE /* libPods-project_hacktothefuture-tvOSTests.a */; };
 		DC1D48049553967414A199E4 /* libPods-project_hacktothefuture-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 62DE7728D7148D0DEFAB1620 /* libPods-project_hacktothefuture-tvOS.a */; };
+		9BFCDD8DE34C4A13AF4FE387 /* AvenirNextRoundedProBold.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 489B1A4915D547A580C8E195 /* AvenirNextRoundedProBold.TTF */; };
+		37D4AB23C41B426780769E4A /* AvenirNextRoundedProBoldIt.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 07076B72ECC447D697BA18BC /* AvenirNextRoundedProBoldIt.TTF */; };
+		8A48DD24DD5A459CB33C9230 /* AvenirNextRoundedProDemi.TTF in Resources */ = {isa = PBXBuildFile; fileRef = CBAD84D1D19341B5B9742027 /* AvenirNextRoundedProDemi.TTF */; };
+		AFEB79FB062A4F30A301C0B3 /* AvenirNextRoundedProDemiIt.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 6992FCAECB70490C91E766A2 /* AvenirNextRoundedProDemiIt.TTF */; };
+		1D3F3FB8FC224193B1B740C0 /* AvenirNextRoundedProMedium.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 7124B721846A48E9A5511A20 /* AvenirNextRoundedProMedium.TTF */; };
+		6496FDBB84374BC782FC5865 /* AvenirNextRoundedProMediumIt.TTF in Resources */ = {isa = PBXBuildFile; fileRef = DF33E03C2C6A4D01A390F6D9 /* AvenirNextRoundedProMediumIt.TTF */; };
+		52947D2FC06E4315BFC64232 /* AvenirNextRoundedProRegular.TTF in Resources */ = {isa = PBXBuildFile; fileRef = FD6F47C7D7F743DABAB0915A /* AvenirNextRoundedProRegular.TTF */; };
+		7B0CA0B789414A6B94A17D87 /* AvenirNextRoundedProRegularIt.TTF in Resources */ = {isa = PBXBuildFile; fileRef = E574B9743D6A465589A8FF87 /* AvenirNextRoundedProRegularIt.TTF */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +75,14 @@
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		F3C355C4A2B5711B3C35DB52 /* Pods-project_hacktothefuture.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-project_hacktothefuture.release.xcconfig"; path = "Target Support Files/Pods-project_hacktothefuture/Pods-project_hacktothefuture.release.xcconfig"; sourceTree = "<group>"; };
+		489B1A4915D547A580C8E195 /* AvenirNextRoundedProBold.TTF */ = {isa = PBXFileReference; name = "AvenirNextRoundedProBold.TTF"; path = "../src/assets/fonts/AvenirNextRoundedProBold.TTF"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		07076B72ECC447D697BA18BC /* AvenirNextRoundedProBoldIt.TTF */ = {isa = PBXFileReference; name = "AvenirNextRoundedProBoldIt.TTF"; path = "../src/assets/fonts/AvenirNextRoundedProBoldIt.TTF"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		CBAD84D1D19341B5B9742027 /* AvenirNextRoundedProDemi.TTF */ = {isa = PBXFileReference; name = "AvenirNextRoundedProDemi.TTF"; path = "../src/assets/fonts/AvenirNextRoundedProDemi.TTF"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		6992FCAECB70490C91E766A2 /* AvenirNextRoundedProDemiIt.TTF */ = {isa = PBXFileReference; name = "AvenirNextRoundedProDemiIt.TTF"; path = "../src/assets/fonts/AvenirNextRoundedProDemiIt.TTF"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		7124B721846A48E9A5511A20 /* AvenirNextRoundedProMedium.TTF */ = {isa = PBXFileReference; name = "AvenirNextRoundedProMedium.TTF"; path = "../src/assets/fonts/AvenirNextRoundedProMedium.TTF"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		DF33E03C2C6A4D01A390F6D9 /* AvenirNextRoundedProMediumIt.TTF */ = {isa = PBXFileReference; name = "AvenirNextRoundedProMediumIt.TTF"; path = "../src/assets/fonts/AvenirNextRoundedProMediumIt.TTF"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		FD6F47C7D7F743DABAB0915A /* AvenirNextRoundedProRegular.TTF */ = {isa = PBXFileReference; name = "AvenirNextRoundedProRegular.TTF"; path = "../src/assets/fonts/AvenirNextRoundedProRegular.TTF"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		E574B9743D6A465589A8FF87 /* AvenirNextRoundedProRegularIt.TTF */ = {isa = PBXFileReference; name = "AvenirNextRoundedProRegularIt.TTF"; path = "../src/assets/fonts/AvenirNextRoundedProRegularIt.TTF"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +197,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				0CF65D31ABB7DD9EB80EEE8A /* Pods */,
+				5F1E9C23B5FD45D4B3206D70 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -197,6 +214,22 @@
 			);
 			name = Products;
 			sourceTree = "<group>";
+		};
+		5F1E9C23B5FD45D4B3206D70 /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				489B1A4915D547A580C8E195 /* AvenirNextRoundedProBold.TTF */,
+				07076B72ECC447D697BA18BC /* AvenirNextRoundedProBoldIt.TTF */,
+				CBAD84D1D19341B5B9742027 /* AvenirNextRoundedProDemi.TTF */,
+				6992FCAECB70490C91E766A2 /* AvenirNextRoundedProDemiIt.TTF */,
+				7124B721846A48E9A5511A20 /* AvenirNextRoundedProMedium.TTF */,
+				DF33E03C2C6A4D01A390F6D9 /* AvenirNextRoundedProMediumIt.TTF */,
+				FD6F47C7D7F743DABAB0915A /* AvenirNextRoundedProRegular.TTF */,
+				E574B9743D6A465589A8FF87 /* AvenirNextRoundedProRegularIt.TTF */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -344,6 +377,14 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				9BFCDD8DE34C4A13AF4FE387 /* AvenirNextRoundedProBold.TTF in Resources */,
+				37D4AB23C41B426780769E4A /* AvenirNextRoundedProBoldIt.TTF in Resources */,
+				8A48DD24DD5A459CB33C9230 /* AvenirNextRoundedProDemi.TTF in Resources */,
+				AFEB79FB062A4F30A301C0B3 /* AvenirNextRoundedProDemiIt.TTF in Resources */,
+				1D3F3FB8FC224193B1B740C0 /* AvenirNextRoundedProMedium.TTF in Resources */,
+				6496FDBB84374BC782FC5865 /* AvenirNextRoundedProMediumIt.TTF in Resources */,
+				52947D2FC06E4315BFC64232 /* AvenirNextRoundedProRegular.TTF in Resources */,
+				7B0CA0B789414A6B94A17D87 /* AvenirNextRoundedProRegularIt.TTF in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
